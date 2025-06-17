@@ -3,8 +3,10 @@ package com.nikhilzzz.JPA_Project01.Service;
 import com.nikhilzzz.JPA_Project01.Entity.Student;
 import com.nikhilzzz.JPA_Project01.Repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +25,7 @@ public class StudentService {
         return studentList;
     }
     public Student studentById( Integer id){
-        return  studentRepo.findById(id).orElseThrow(() -> new RuntimeException("Student with id not found")); // if return type was student the we use .orElseThrow(() -> new RuntimeException)
+        return  studentRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404))); // if return type was student the we use .orElseThrow(() -> new RuntimeException)
     }
 
 }
