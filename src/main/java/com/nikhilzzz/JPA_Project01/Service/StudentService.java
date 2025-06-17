@@ -3,6 +3,7 @@ package com.nikhilzzz.JPA_Project01.Service;
 import com.nikhilzzz.JPA_Project01.Entity.Student;
 import com.nikhilzzz.JPA_Project01.Repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,7 +33,7 @@ public class StudentService {
     }
 
     public Student updateStudentById(Integer id, Student updated){
-        Student dbStudent  = studentRepo.findById(id).orElseThrow(() ->new ResponseStatusException(HttpStatusCode.valueOf(404)));
+        Student dbStudent  = studentRepo.findById(id).orElseThrow(() ->new ResponseStatusException(HttpStatus.NOT_FOUND, "Student Id not found!!"));
 
         dbStudent.setName(updated.getName());
         dbStudent.setAge(updated.getAge());
