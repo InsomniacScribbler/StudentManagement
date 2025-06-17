@@ -27,5 +27,8 @@ public class StudentService {
     public Optional<Student> studentById( Integer id){
         return  studentRepo.findById(id); // if return type was student the we use .orElseThrow(() -> new RuntimeException)
     }
+    public List<Student> saveAllStudents(List<Student> students) {
+        return studentRepo.saveAll(students);  // This is a built-in JPA method
+    }
 
 }

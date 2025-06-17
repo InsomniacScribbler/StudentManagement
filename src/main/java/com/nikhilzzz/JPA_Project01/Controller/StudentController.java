@@ -23,6 +23,12 @@ public class StudentController {
         System.out.println("Student saved successfully !");
         return studentService.saveStudent(student);
     }
+    @PostMapping("/saveMultipleStudents")
+    public List<Student> createStudents(@RequestBody List<Student> studentList) {
+        System.out.println("Students saved successfully !");
+        return studentService.saveAllStudents(studentList);
+    }
+
     @GetMapping("/allStudents")
     public List<Student> getAllStudentsData(Student student){
         System.out.println("The Enrolled Students are:\n");
