@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "students", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"email"})
+        @UniqueConstraint(columnNames = {"Student_Emails"})
 })
 public class Student {
 
@@ -13,6 +13,7 @@ public class Student {
     private int id;
 
     private String name;
+    @Column(name = "Student_Emails")
     private String email;
     private int age;
 
