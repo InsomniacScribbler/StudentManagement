@@ -4,6 +4,10 @@ import com.nikhilzzz.JPA_Project01.Entity.Student;
 import com.nikhilzzz.JPA_Project01.Repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentService {
@@ -13,6 +17,13 @@ public class StudentService {
 
     public Student saveStudent(Student student){
         return studentRepo.save(student);
+    }
+    public List<Student> getAllStudents(){
+        List<Student> studentList = studentRepo.findAll();
+        return studentList;
+    }
+    public Student studentById( Integer id){
+        return  studentRepo.findById(id).orElseThrow(() -> new RuntimeException("Student with id not found")); // if return type was student the we use .orElseThrow(() -> new RuntimeException)
     }
 
 }
