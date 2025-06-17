@@ -5,6 +5,7 @@ import com.nikhilzzz.JPA_Project01.Entity.Student;
 import com.nikhilzzz.JPA_Project01.Repository.StudentRepo;
 import com.nikhilzzz.JPA_Project01.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,5 +40,12 @@ public class StudentController {
     public Optional<Student> getStudentById(@PathVariable Integer id){
         return studentService.studentById(id);
     }
+
+    @PutMapping("/updateById/{id}")
+    public ResponseEntity<Student> updateStudent(@PathVariable Integer id, @RequestBody Student update){
+        Student updatedStudent = studentService.updateStudentById(id, update);
+        return ResponseEntity.ok(updatedStudent);
+    }
+
 
 }

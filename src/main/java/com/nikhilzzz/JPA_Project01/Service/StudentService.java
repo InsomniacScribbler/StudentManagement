@@ -31,4 +31,12 @@ public class StudentService {
         return studentRepo.saveAll(students);  // This is a built-in JPA method
     }
 
+    public Student updateStudentById(Integer id, Student updated){
+        Student dbStudent  = studentRepo.findById(id).orElseThrow(() ->new ResponseStatusException(HttpStatusCode.valueOf(404)));
+
+        dbStudent.setName(updated.getName());
+        dbStudent.setAge(updated.getAge());
+        dbStudent.setEmail(updated.getEmail());
+        return studentRepo.save(dbStudent);
+    }
 }
