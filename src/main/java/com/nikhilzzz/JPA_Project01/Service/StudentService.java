@@ -24,8 +24,8 @@ public class StudentService {
         List<Student> studentList = studentRepo.findAll();
         return studentList;
     }
-    public Student studentById( Integer id){
-        return  studentRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatusCode.valueOf(404))); // if return type was student the we use .orElseThrow(() -> new RuntimeException)
+    public Optional<Student> studentById( Integer id){
+        return  studentRepo.findById(id); // if return type was student the we use .orElseThrow(() -> new RuntimeException)
     }
 
 }

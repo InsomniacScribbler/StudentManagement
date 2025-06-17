@@ -30,7 +30,7 @@ public class StudentController {
     }
 
     @GetMapping("/studentById/{id}")
-    public Student getStudentById(@PathVariable Integer id){
+    public Optional<Student> getStudentById(@PathVariable Integer id){
         return studentService.studentById(id);
     }
 
