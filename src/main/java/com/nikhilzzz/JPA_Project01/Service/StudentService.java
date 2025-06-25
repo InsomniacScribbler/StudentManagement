@@ -39,5 +39,18 @@ public class StudentService {
         dbStudent.setAge(updated.getAge());
         dbStudent.setEmail(updated.getEmail());
         return studentRepo.save(dbStudent);
+
+
+
+        /*this whole thing can also be written in the form of
+        * Optional<Student> studentById = studentRepo.findById(id);
+        if (studentById.isPresent()){
+            Student dbStud = studentById.get();
+            dbStud.setName();
+            dbStud.setEmail();
+            dbStud.setAge();
+            dbStud.setId();
+        }*/
+
     }
 }
