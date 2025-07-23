@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/student")
+@CrossOrigin(origins = "*") // allows frontend to talk to backend
 public class StudentController {
 
     @Autowired
